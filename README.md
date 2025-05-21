@@ -1,7 +1,7 @@
 # BCS-The-Goblet-of-Fire
 BCS secretary recruitment task - The Goblet of Fire
 
-(For testing the code use the code in the file : "submission_code", add the pickle file in the line 176, The default number of episodes are set to 200 (to be able to perceive the percenaage win per 100 episodes), change the render = True to False for the fast training in line 167 and the line 264, The values are trained on the maze V1.txt which is to provided in line 36. and all the required python packages should be installed(pygame, numpy, matplotlib, tqdm), pickle file is available in the files section named : "q_table_30000.pkl")
+(For testing the code use the code in the file : "submission_code", add the pickle file in the line 176, The default number of episodes are set to 200 (to be able to perceive the percenaage win per 100 episodes) you can change the number of episodes in the lines 167 and 264, change the render = True to False for the fast training in line 167 and the line 264, The values are trained on the maze V1.txt which is to provided in line 36. and all the required python packages should be installed(pygame, numpy, matplotlib, tqdm), pickle file is available in the files section named : "q_table_30000.pkl")
 
 I trained the model using the code in the file : training_code for 30,000 episodes:
 No. of generations it takes for Harry to escape the Death eater consistently (10 times in a row) = 23922 : with the win rate of nearly 60 percent in that span of 100 episodes
@@ -30,3 +30,7 @@ Code Explanation:
   I also limited the number of episodes to 200, to avoid and remove the cases of oscillation where if harry moves up, death eater moves up and viceversa.
 6)Stored the q values in pickle file cause it retains all the builtin data types.
 7)Plotted the statistics.
+
+Randomess1.txt: Harry gets the ability to move 2 spots every 10% of the time :
+(Included the randomness : 'Harry gets the ability to move 2 spots every 10% of the time' in the code in the file named randomenss1.py where inorder to turn the renderng on , change the render = True in the lines 177 and 270, to change the number of episodes for training : change the episodes in the lines 177 and 270 :
+In this code I have changed the move_harry function making it able to move two steps if the random probillity predicted is less than 10 percent as if harry gets the oppertunity to move 2 spots every 10% of the time across all the episodes this just means that at every point of time there is a 10% for him to take 2 steps.)
