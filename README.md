@@ -12,6 +12,9 @@ The statistics for the training are : ![image](https://github.com/user-attachmen
 The statistics include : Per episode reward, Training errors with rolling length of 50 and win rate over time(tracking for every 100 episodes)
 The pickle file containing the q table recoreded at the end of the training : q_table_30000.pkl(in the files section)
 
+Assumption: The death eater can cross the cup.
+            The maze donot have a position surrounded by walls on all sides.
+
 Code Explanation:
 1)I recreated the maze from the input file, allowing the option to upload differnet mazes. Here I used the line.strip() to remove the white spaces in a line and then iterated through the characters of every line to recreate the maze.
 2)Used pygame for rendering the animation. Created the 15*10 grids with the individual grid size of 40*40 pixels. The free path is shown in white and the obstacles in gray. Cup is shown in green color, Harry in blue and death eater in red. Used the time.sleep(0.2) to help us percieve the rendering thorough human eye.
@@ -34,3 +37,7 @@ Code Explanation:
 Randomess1.txt: Harry gets the ability to move 2 spots every 10% of the time :
 (Included the randomness : 'Harry gets the ability to move 2 spots every 10% of the time' in the code in the file named randomenss1.py where inorder to turn the renderng on , change the render = True in the lines 177 and 270, to change the number of episodes for training : change the episodes in the lines 177 and 270 :
 In this code I have changed the move_harry function making it able to move two steps if the random probillity predicted is less than 10 percent as if harry gets the oppertunity to move 2 spots every 10% of the time across all the episodes this just means that at every point of time there is a 10% for him to take 2 steps.)
+
+For 2 death eaters:
+(if the death eaters donot cross each other : for every death eater just treat the other death eater as obstacle or wall and proceed and should also rule out the case in which the death eater 1 is surrounded by walls on 3 sides and the 2nd death eater on the fourth side.
+if they can cross over each other : need to well formulate the case as for example when the death 2 is at a distance greater than 1 from death1 and it is in the future path of death 1 as predicted by bfs algorithm of death1, then I need to compare the future paths of death1 and death2 so as to consider death2 as obstacle or free space, if they cross each other then they both follow the same path)
