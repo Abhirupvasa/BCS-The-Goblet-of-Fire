@@ -164,7 +164,7 @@ successful_episodes : int = 0 # To moniter the number of episodes in which harry
 win_rates = [] #To moniter the winrate for every 100 episodes
 
 #Q-learning
-def q_learning(env : maze_env, episodes : int = 100, render: bool = False) :
+def q_learning(env : maze_env, episodes : int = 200, render: bool = True) :
     #Render is made false to make the training faster
     learning_rate : float = 0.1
     discount_factor : float = 0.95
@@ -173,7 +173,7 @@ def q_learning(env : maze_env, episodes : int = 100, render: bool = False) :
     epsilon_decay : float = 0.995
     global successful_episodes
 
-    with open("q_table.pkl", "rb") as f:
+    with open("q_table_30000.pkl", "rb") as f:
             q_table = pickle.load(f)#q table for storing the q values
 
     consecutive_wins = 0 #variable to check the 10 consecutive wins of harry
@@ -245,6 +245,8 @@ def q_learning(env : maze_env, episodes : int = 100, render: bool = False) :
             win_rates.append(win_rate)
             print(f"Episode {ep}: Last 100 episode win rate: {win_rate*100:.1f}%")
 
+        print(f"Episode {ep+1}/{episodes} completed. Reward : {reward}")
+
         #Track 10 consective wins
         if consecutive_wins >= 10:
             print(f"####Success! Harry won 10 consecutive episodes.")
@@ -259,7 +261,7 @@ def q_learning(env : maze_env, episodes : int = 100, render: bool = False) :
 
 
 env = maze_env()
-trained_q_table = q_learning(env, episodes=100, render=False)  # render is set false for training
+trained_q_table = q_learning(env, episodes=200, render=True)  # render is set false for training
 
 
 fig, axs = plt.subplots(ncols = 3, figsize = (12,5))
